@@ -1,7 +1,7 @@
 # Leetcode_Everyday
 This is my personal repo to track the leetcode problems everyday that I have sloved.
 
-## Topic 1. Binary Search
+## [Topic 1. Binary Search]
 
 ## Topic 2. Binary Tree
 
