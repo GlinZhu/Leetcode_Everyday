@@ -4,7 +4,7 @@ This section is to discuss general strategies that I used to slove binary search
 
 The general method for bianry search works as follows
 
-[!Binary search](./binary_search.png)
+![Binary search](./binary_search.png)
 
 ### Summary
 
