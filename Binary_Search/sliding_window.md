@@ -19,9 +19,11 @@ Note:
 1 <= k <= n <= 30,000.
 Elements of the given array will be in the range [-10,000, 10,000].
 ```
+
 ### Solution 1
 using sliding window to store all sums for the nums array, and then traverse over the sums array to get sum of k length of subarray by using `nums[i+k]-nums[i-1]`, which is pretty much like integral image technique used in eigenfaces in CV. However, this method has O(n) space complexity, and O(n) time complexity.
-```
+
+```cpp
 class Solution {
 public:
     double findMaxAverage(vector<int>& nums, int k) {
@@ -47,7 +49,8 @@ public:
 ```
 ### Solution 2
 This method only traverses the nums array only once, and it also achieves time complexity of O(n), but with space complexity O(1) which is superier than sliding windown above, since it requires constant space to store the sums of subarrays. Sample code works as follows:
-```
+
+```cpp
 class Solution {
 public:
     double findMaxAverage(vector<int>& nums, int k) {
@@ -83,7 +86,7 @@ Output:
 ```
 
 Use slide window approach combined with hash table
-```
+```cpp
 class Solution {
 public:
     vector<int> findAnagrams(string s, string p) {

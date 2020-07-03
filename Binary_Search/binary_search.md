@@ -1,30 +1,62 @@
 # Topic 1 Binary Search
 
-This section is to discuss general strategies that I used to slove binary search problems in leetcode, and only tricky/hard leetcode problem ID will be listed under this topic.
+This section is to discuss general strategies that I used to slove binary search problems in leetcode, and only tricky/hard leetcode problems will be listed here. 
 
 The general method for bianry search works as follows
 
-![Binary search](./binary_search.png)
+![Binary search](./binary_search.png, "Binary search approach")
 
 ### Summary
 
-* Binary search typically sovles problems with sorted arrays and has O(logn) time complexity
-* 
+* Binary search typically sovles problems with sorted arrays and has **O(logn)** time complexity
+* TBD
 
 
 ### Type 1 Binary search for rotated arrays
 Related Leetcode Problems
 - [33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)
-    * method 1: 1) find the minimal value of this array(using binary search), 2) determine where the target is located in the left or right half. 3) regular binary search to find the target. (Best TC is O(logn))
-    * method 2: Only one binary search is needed. 
+    * method 1: 1) find the minimal value of this given array(using binary search), 2) determine where the target is located in the left or right half. 3) regular binary search to find the target. (Best TC is O(logn))
+    * method 2: Only one binary search is needed. See more details [here](https://www.cnblogs.com/grandyang/p/4325648.html). 
+
 - [81. Search in Rotated Sorted Array II](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/)
-    * CANNOT use binary search for this problem
+    * CANNOT use binary search for this problem, since it has duplicated in the sorted array `(Ep, 1131)`, so just use brute force to achieve O(n).
     * but the worst case of this problem is 111111011111. 
 - [153. Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
 - [154. Find Minimum in Rotated Sorted Array II](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/)
+#### Example Code - 33. Search in Rotated Sorted Array
+**Method logic:**
+1. determine where the target is (left half or right half) by comparing between mid and right element of given array. 
+2. if its on the right half/left half, then find if target is within `nums[mid]<target` and `nums[right-1]>=target`, so basically the additioanl condition check is added to this case compared to regular binary search template. 
+```cpp
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        int left=0, right=nums.size();
+        while(left<right){
+            int mid=left+(right-left)/2;
+            //cout<<"left "<<left<<" right: "<<right<<endl;
+            //cout<<"mid "<<mid<<" nums[mid]: "<<nums[mid]<<endl;
+            if(nums[mid]==target) return mid;
+            if(nums[mid]<=nums[right-1]){ //it considers the case (3,1), so has '=';
+                //it also considers if target is equal to the most right element. 
+                if(nums[mid]<target&&nums[right-1]>=target) left=mid+1;
+                else
+                    right=mid;
+            }
+            else{
+                if(nums[mid]>target&&nums[left]<=target) right=mid;
+                else
+                    left=mid+1;
+            }
+        }
+        return -1;
+    }
+};
+```
 
-#### Note
+**Note:**
 As for rotated arrays with duplicated elements, binary search CANNOT be applied to this problem. Thus the worst TC is O(n). 
+{: .note}
 
 
 
@@ -37,7 +69,7 @@ Output: 1
 Explanation: The only heater was placed in the position 2, and if we use the radius 1 standard, then all the houses can be warmed.
 ```
 Solution 1
-```
+```cpp
 class Solution {
 public:
     int findRadius(vector<int>& houses, vector<int>& heaters) {
@@ -88,7 +120,7 @@ public:
 };
 ```
 Solution 2:
-```
+```cpp
 class Solution {
 public:
     int findRadius(vector<int>& houses, vector<int>& heaters) {
