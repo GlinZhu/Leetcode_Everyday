@@ -4,7 +4,7 @@ This section is to discuss general strategies that I used to slove binary search
 
 The general method for bianry search works as follows
 
-![Binary search](./binary_search.png, "Binary search approach")
+![Binary search](./binary_search.png "Binary search approach")
 
 ### Summary
 
@@ -55,8 +55,7 @@ public:
 ```
 
 **Note:**
-As for rotated arrays with duplicated elements, binary search CANNOT be applied to this problem. Thus the worst TC is O(n). 
-{: .note}
+As for rotated arrays with duplicated elements, binary search CANNOT be applied to this problem. Thus the worst TC is O(n). {: .note}
 
 
 
