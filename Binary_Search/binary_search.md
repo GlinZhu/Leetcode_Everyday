@@ -9,7 +9,23 @@ The general method for bianry search works as follows
 ### Summary
 
 * Binary search typically sovles problems with sorted arrays and has O(logn) time complexity
-* TBD
+* 
+
+
+### Type 1 Binary search for rotated arrays
+Related Leetcode Problems
+- [33. Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/)
+    * method 1: 1) find the minimal value of this array(using binary search), 2) determine where the target is located in the left or right half. 3) regular binary search to find the target. (Best TC is O(logn))
+    * method 2: Only one binary search is needed. 
+- [81. Search in Rotated Sorted Array II](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/)
+    * CANNOT use binary search for this problem
+    * but the worst case of this problem is 111111011111. 
+- [153. Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/)
+- [154. Find Minimum in Rotated Sorted Array II](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/)
+
+#### Note
+As for rotated arrays with duplicated elements, binary search CANNOT be applied to this problem. Thus the worst TC is O(n). 
+
 
 
 ### Leetcode 475 Heaters
